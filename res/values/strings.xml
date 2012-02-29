@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Photo Spy</string>
+  <string name="app_name">Photo Spy</string>
   <string name="show_image">Image</string>
+  <string name="unknown">unknown location</string>
 </resources>

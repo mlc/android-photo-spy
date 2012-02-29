@@ -14,13 +14,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class SpyActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Cursor>,AdapterView.OnItemClickListener {
     private static final String TAG = "SpyActivity";
     private static final String[] PROJECTION = {
             MediaStore.Images.Media.DISPLAY_NAME,
-            MediaStore.Images.Media.MIME_TYPE,
-            MediaStore.Images.Media.DATA,
+            MediaStore.Images.Media.LATITUDE,
+            MediaStore.Images.Media.LONGITUDE,
             MediaStore.Images.Media._ID
     };
     private ListView list;
@@ -41,6 +42,7 @@ public class SpyActivity extends FragmentActivity implements LoaderManager.Loade
         empty.setVisibility(View.VISIBLE);
 
         adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, null, PROJECTION, new int[] { android.R.id.text1, android.R.id.text2 }, 0);
+        adapter.setViewBinder(new TitleLocationBinder());
         list.setAdapter(adapter);
         list.setOnItemClickListener(this);
         getSupportLoaderManager().initLoader(0, null, this);
@@ -77,5 +79,22 @@ public class SpyActivity extends FragmentActivity implements LoaderManager.Loade
         Intent intent = new Intent(this, ShowImage.class);
         intent.setData(uri);
         startActivity(intent);
+    }
+
+    private static class TitleLocationBinder implements SimpleCursorAdapter.ViewBinder {
+        public boolean setViewValue(View view, Cursor cursor, int i) {
+            if (i == 1) {
+                double latitude = cursor.getDouble(i),
+                        longitude = cursor.getDouble(i+1);
+                if (latitude == 0.0 && longitude == 0.0) {
+                    ((TextView)view).setText(R.string.unknown);
+                } else {
+                    ((TextView)view).setText(latitude + ", " + longitude);
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
