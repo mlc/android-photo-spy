@@ -17,6 +17,34 @@ to be able to do the same, which is kind of confusing. Google
 devices handles this issue,” which is kind of wise under the
 circumstances.
 
+
+Installation
+------------
+
+Scan this QR code:
+
+![QR Code][qrcode]
+
+
+Building
+--------
+
+Get the [Android SDK][sdk]. Then, fetch a copy of this project, open
+up a terminal in the project's directory, and do
+
+```
+android update project -p .
+ant clean debug
+```
+
+If you have a phone plugged in or an emulator running, you can then do
+
+```
+ant installd
+```
+
+to install.
+
 License
 -------
 
@@ -33,6 +61,8 @@ and distributed under the [Apache License, Version 2.0][apache].
 
 [internet]: http://developer.android.com/reference/android/Manifest.permission.html#INTERNET
 [nyt]: http://bits.blogs.nytimes.com/2012/02/28/tk-ios-gives-developers-access-to-photos-videos-location/?hp
+[qrcode]: https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https://github.com/downloads/mlc/android-photo-spy/PhotoSpy-debug.apk
+[sdk]: http://developer.android.com/sdk/index.html
 [me]: http://mlcastle.net/
 [wtfpl]: http://sam.zoy.org/wtfpl/
 [support]: http://developer.android.com/sdk/compatibility-library.html
