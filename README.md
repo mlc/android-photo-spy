@@ -17,6 +17,8 @@ to be able to do the same, which is kind of confusing. Google
 devices handles this issue,” which is kind of wise under the
 circumstances.
 
+**Note:** as of Android 4.4 ("KitKat"), this [no longer works][kk] without
+the `READ_EXTERNAL_STORAGE` permission.
 
 Installation
 ------------
@@ -67,3 +69,4 @@ and distributed under the [Apache License, Version 2.0][apache].
 [wtfpl]: http://sam.zoy.org/wtfpl/
 [support]: http://developer.android.com/sdk/compatibility-library.html
 [apache]: https://www.apache.org/licenses/LICENSE-2.0
+[kk]: https://developer.android.com/about/versions/android-4.4.html#BehaviorStorage
